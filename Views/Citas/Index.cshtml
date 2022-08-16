@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Servicios_bufete.Models.Cita>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gestion de citas</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Especialidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Solicitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    <select asp-for="@item.Especialidad"
+                        class="form-control" asp-items="ViewBag.Especialidades" disabled>
+                    </select>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Solicitud)
+                </td>
+                <td>
+                    @if (item.Fecha>DateTime.Now)
+                    {
+                        <a>Activa</a>
+                    }
+                    else
+                    {
+
+                        <a>Acudio</a>
+                    }
+
+                </td>
+                <td>
+                    @if (item.Fecha>DateTime.Now)
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    }
+                    else
+                    {
+
+                        <a>No se puede modificar</a>
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

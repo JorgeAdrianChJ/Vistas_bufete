@@ -1,0 +1,48 @@
+﻿@model Servicios_bufete.Models.Usuario
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Registrar</h1>
+
+<h4>Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Identificacion" class="control-label"></label>
+                <input asp-for="Identificacion" class="form-control" />
+                <span asp-validation-for="Identificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaNacimiento" class="control-label"></label>
+                <input asp-for="FechaNacimiento" class="form-control" />
+                <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NombreCompleto" class="control-label"></label>
+                <input asp-for="NombreCompleto" class="form-control" />
+                <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoPago" class="control-label"></label>
+                    <select asp-for="TipoPago"
+                        class="form-control" asp-items="ViewBag.TipoPagos">
+                    <option>Please select one</option>
+                </select>
+                <span asp-validation-for="TipoPago" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Registrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,51 @@
+﻿@model Servicios_bufete.Models.Cita
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Comprobantes de la cita</h1>
+
+<div>
+    <h4>Cita</h4>
+    <hr />
+ <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Especialidad)
+        </dt>
+        <dd class = "col-sm-10">
+                <select asp-for="@Model.Especialidad"
+                        class="form-control" asp-items="ViewBag.Especialidades" disabled>
+                    </select>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Solicitud)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Solicitud)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Fecha>DateTime.Now)
+                    {
+                        <a>Activa</a>
+                    }
+                    else
+                    {
+
+                        <a>Acudio</a>
+                    }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Volver a la gestión</a>
+</div>

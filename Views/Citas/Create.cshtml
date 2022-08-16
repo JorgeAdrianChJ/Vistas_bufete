@@ -1,0 +1,51 @@
+﻿@model Servicios_bufete.Models.Cita
+@using Vistas_bufete.Enum
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Cita</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Especialidad" class="control-label"></label>
+                <select asp-for="Especialidad"
+                        class="form-control" asp-items="ViewBag.Especialidades">
+                    <option>Please select one</option>
+                </select>
+                <span asp-validation-for="Especialidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Hora" class="control-label"></label>
+                <select asp-for="Hora"
+                        class="form-control" asp-items="ViewBag.Horas">
+                    <option>Please select one</option>
+                </select>
+                <span asp-validation-for="Hora" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la gestión</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
